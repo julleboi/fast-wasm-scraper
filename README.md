@@ -1,5 +1,7 @@
 # **fast-wasm-scraper**
 
+![Continuous integration](https://github.com/julleboi/fast-wasm-scraper/workflows/Continuous%20integration/badge.svg?branch=main)
+
 A fast alternative for JavaScript-based scraping tools, intended for both 
 frontend and backend. **fast-wasm-scraper** is practically a wrapper for 
 **[scraper](https://github.com/causal-agent/scraper)** (intended for parsing 
@@ -10,14 +12,6 @@ HTML and querying with CSS selectors) -- which compiles to WebAssembly.
 ```
 $ yarn add fast-wasm-scraper
 ```
-
-## **Building**
-
-### Prerequisites
-
-- **rustup** (Rust toolchain -- 1.30.0 or later)
-- **wasm32-unknown-unknown** (Build target for rustup)
-- **wasm-bindgen** and **wasm-pack** (Rust - JS interaction)
 
 ## **Examples**
 
