@@ -103,7 +103,7 @@ impl Element {
             _       => return result
         };
         for el in self.element().select(&selector) {
-            result.push_el(Element(el.id(), self.1.clone()));
+            result.push_el(Element(el.id(), self.1));
         }
         result
     }
