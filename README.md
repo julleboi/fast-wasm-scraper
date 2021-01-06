@@ -1,5 +1,7 @@
 # **fast-wasm-scraper**
 
+![Continuous integration](https://github.com/julleboi/fast-wasm-scraper/workflows/Continuous%20integration/badge.svg?branch=main)
+
 A fast alternative for JavaScript-based scraping tools, intended for both 
 frontend and backend. **fast-wasm-scraper** is practically a wrapper for 
 **[scraper](https://github.com/causal-agent/scraper)** (intended for parsing 
