@@ -91,6 +91,6 @@ doc.root.query('li');
 
 ### Specifications
 
-| CPU  | intel ix-xxxxx (x cores @ x.xx GHz) |
-| RAM  | xx GB DDRX @ xxxx MHz               |
-| Node | version 12.xx                       |
+- **CPU**: intel ix-xxxxx (x cores @ x.xx GHz)
+- **RAM**: xx GB DDRX @ xxxx MHz
+- **Node**: version 12.xx
