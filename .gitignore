@@ -4,3 +4,5 @@ Cargo.lock
 bin/
 pkg/
 wasm-pack.log
+benchmark/yarn.lock
+benchmark/node_modules/
