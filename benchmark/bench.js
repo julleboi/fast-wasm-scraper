@@ -4,7 +4,7 @@ const cheerio = require('cheerio');
 const fws = require('fast-wasm-scraper');
 const jsdom = require('jsdom');
 
-const html = fs.readFileSync('./sample.html').toString();
+const html = fs.readFileSync('./testdata/sample.html').toString();
 const suite = new Benchmark.Suite;
 
 suite.add('cheerio', function() {
