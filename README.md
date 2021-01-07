@@ -84,7 +84,8 @@ doc.root.query('li');
 |                                                              |                         |                   |                   |
 | Sample size (#)                                              | 45                      | 32                | 10                |
 | Speed (ops/s)                                                | 17.27 (+/- 1.35%)       | 11.47 (+/- 7.90%) | 2.14 (+/- 13.32%) |
-| Speedup (%)                                                  | +50.57 compared to cheerio, and +807.00 to JsDOM              |||
+| Speedup (%)                                                  | +50.57 compared to cheerio, and +807.00 to JsDOM        | - | - |
+
 *This benchmark was conducted on a rather modest dual core CPU and Node.js 
 v.12.20.0. It should be noted that the expected performance gains are even 
 greater with larger documents. You can also run the benchmarks locally by 
