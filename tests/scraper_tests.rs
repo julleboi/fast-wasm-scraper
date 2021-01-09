@@ -41,9 +41,7 @@ fn multiple_attributes() {
     
     let el = el.unwrap();
     let attrs = el.attributes();
-    assert!(attrs.has("one"));
-    assert!(attrs.has("two"));
-    assert!(attrs.has("three"));
+    assert!(attrs.has("one") && attrs.has("two") && attrs.has("three"));
 }
 
 #[wasm_bindgen_test]
