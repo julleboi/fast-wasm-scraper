@@ -3,11 +3,11 @@
     "bench": "node bench.js"
   },
   "dependencies": {
-    "cheerio": "1.0.0-rc.5",
-    "jsdom": "16.4.0",
-    "fast-wasm-scraper": "1.0.0"
+    "cheerio": "^1.0.0-rc.5",
+    "jsdom": "^16.4.0",
+    "fast-wasm-scraper": "^1.0.0"
   },
   "devDependencies": {
-    "benchmark": "2.1.4"
+    "benchmark": "^2.1.4"
   }
 }

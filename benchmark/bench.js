@@ -1,10 +1,11 @@
 const fs = require('fs');
+const path = require('path');
 const Benchmark = require('benchmark');
 const cheerio = require('cheerio');
-const fws = require('fast-wasm-scraper');
-const jsdom = require('jsdom');
+const { Document } = require('fast-wasm-scraper');
+const { JSDOM } = require('jsdom');
 
-const html = fs.readFileSync('./testdata/sample.html').toString();
+const html = fs.readFileSync(path.join(__dirname, './testdata/sample.html')).toString();
 const suite = new Benchmark.Suite;
 
 suite.add('cheerio', function() {
@@ -12,12 +13,12 @@ suite.add('cheerio', function() {
   doc('*');
 })
 .add('jsdom', function() {
-  const doc = new jsdom.JSDOM(html);
-  doc.window.document.querySelectorAll('*');
+  const doc = new JSDOM(html);
+  doc.window.document.querySelectorAll('li');
 })
 .add('fast-wasm-scraper', function() {
-  const doc = new fws.Document(html);
-  doc.root.query('*').forEach(e => e.free());
+  const doc = new Document(html);
+  doc.root.query('li').forEach(e => e.free());
   doc.free();
 })
 .on('cycle', function(event) {

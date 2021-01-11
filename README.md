@@ -76,17 +76,16 @@ doc.root.query('li');
 
 ## **Benchmark**
 
-|                                                              | fast-wasm-scraper       | cheerio           | JsDOM             |
-| ------------------------------------------------------------ | :---------------------: | :---------------: | :---------------: |
-| **Runtime**	                                                 | WebAssembly (from Rust) | JavaScript        | JavaScript        |
-|                                                              |                         |                   |                   |
-| Parsing, and querying with `*`, for a ~200 KB HTML document  |                         |                   |                   |
-|                                                              |                         |                   |                   |
-| Sample size (#)                                              | 45                      | 32                | 10                |
-| Speed (ops/s)                                                | 17.27 (+/- 1.35%)       | 11.47 (+/- 7.90%) | 2.14 (+/- 13.32%) |
-| Speedup (%)                                                  | +50.57 compared to cheerio, and +807.00 to JsDOM        | - | - |
+|                                                                     | fast-wasm-scraper       | cheerio         | JsDOM             |
+| ------------------------------------------------------------------- | :---------------------: | :-------------: | :---------------: |
+| **Runtime**	                                                        | WebAssembly (from Rust) | JavaScript      | JavaScript        |
+|                                                                     |                         |                 |                   |
+| Parsing, and querying with `li`, for a document with 100 list items |                         |                 |                   |
+|                                                                     |                         |                 |                   |
+| Sample size (#)                                                     | 87                      | 74              | 52                |
+| Speed (ops/s)                                                       | 539 (+/- 1.37%)         | 318 (+/- 4.75%) | 38.2 (+/- 11.25%) |
+| Speedup                                                             | 1.69x compared to cheerio, and 14x to JsDOM           | - | - |
 
 *This benchmark was conducted on a rather modest dual core CPU and Node.js 
-v.12.20.0. It should be noted that the expected performance gains are even 
-greater with larger documents. You can also run the benchmarks locally by 
-cloning the GitHub repository.*
+v.12.20.0. You can also run the benchmarks locally by cloning the GitHub 
+repository.*

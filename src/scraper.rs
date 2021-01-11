@@ -1,14 +1,12 @@
-use scraper::*;
-use ego_tree::*;
-use wasm_bindgen::prelude::*;
-use std::rc::*;
+use scraper::{ Html, ElementRef, Selector };
+use ego_tree::NodeId;
+use wasm_bindgen::prelude::wasm_bindgen;
 
 #[wasm_bindgen]
-pub struct Document(Rc<Html>);
+pub struct Document(Box<Html>);
 
 #[wasm_bindgen]
 impl Document {
-
     
     /// **Takes** the raw HTML as a string, and **returns** a new `Document` 
     ///
@@ -19,31 +17,32 @@ impl Document {
     /// ```
     #[wasm_bindgen(constructor)]
     pub fn load(html: &str) -> Self {
-        Self(Rc::new(Html::parse_document(html)))
+        Self(Box::new(Html::parse_document(html)))
     }
 
     /// **Returns** the root `Element`
     #[wasm_bindgen(getter)]
     pub fn root(&self) -> Element {
-        Element(self.0.root_element().id(), Rc::downgrade(&self.0))
+        Element(self.0.root_element().id(), &*self.0)
     }
 
 }
 
 #[wasm_bindgen]
-pub struct Element(NodeId, Weak<Html>);
+pub struct Element(NodeId, *const Html);
 
 #[wasm_bindgen]
 impl Element {
 
     fn element(&self) -> ElementRef {
         unsafe {
-            if let Some(html) = self.1.as_ptr().as_ref() {
-                let node = html.tree.get_unchecked(self.0);
-                return ElementRef::wrap(node).unwrap();
+            let html = &*self.1;
+            let node = html.tree.get_unchecked(self.0);
+            match ElementRef::wrap(node) {
+                Some(res) => res,
+                None      => panic!()
             }
         }
-        panic!("Pointer was null, because a strong reference did not exist")
     }
 
     /// **Returns** the name as a `string` for this `Element`
@@ -103,13 +102,14 @@ impl Element {
     #[wasm_bindgen(method)]
     pub fn query(&self, query_str: &str) -> ElementArray {
         let result = ElementArray::new();
-        let selector = match Selector::parse(query_str) {
-            Ok(sel) => sel,
-            _       => return result
+        match Selector::parse(query_str) {
+            Ok(sel) => {
+                for elem in self.element().select(&sel) {
+                    result.push_el(Element(elem.id(), self.1));
+                }
+            }
+            Err(_)  => return result
         };
-        for el in self.element().select(&selector) {
-            result.push_el(Element(el.id(), self.1.clone()));
-        }
         result
     }
 

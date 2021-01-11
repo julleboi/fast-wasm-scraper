@@ -1,7 +1,8 @@
 [package]
 name = "fast-wasm-scraper"
 description = "Fast HTML scraper with WASM"
-version = "1.0.0"
+keywords = [ "wasm", "html scraper", "scraper" ]
+version = "1.0.1"
 authors = ["julius turunen"]
 license = "MIT"
 repository = "https://github.com/julleboi/fast-wasm-scraper"
