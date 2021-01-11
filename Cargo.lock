@@ -101,7 +101,7 @@ checksum = "3a68a4904193147e0a8dec3314640e6db742afd5f6e634f428a6af230d9b3591"
 
 [[package]]
 name = "fast-wasm-scraper"
-version = "1.0.0"
+version = "1.0.1"
 dependencies = [
  "ego-tree",
  "scraper",
