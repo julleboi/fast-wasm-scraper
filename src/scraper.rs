@@ -39,7 +39,7 @@ impl Element {
             let html = &*self.1;
             let node = html.tree.get_unchecked(self.0);
             match ElementRef::wrap(node) {
-                Some(res) => return res,
+                Some(res) => res,
                 None      => panic!()
             }
         }
